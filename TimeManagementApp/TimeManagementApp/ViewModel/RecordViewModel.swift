@@ -8,7 +8,7 @@
 import SwiftUI
 
 class RecordViewModel: ObservableObject {
-    @Published var switchViewController:Int = 0
+    @Published var switchViewController = true
     
     @Published var eventTitle:String = ""
     @Published var elapsedHour:Int = 0

@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct TimeStartView: View {
-    
-    
     @EnvironmentObject var viewModel: RecordViewModel
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         NavigationView {
@@ -20,35 +17,38 @@ struct TimeStartView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(25)
                 Spacer()
-                Button(action: {
-                    viewModel.switchViewController = 1
-                    if(viewModel.eventTitle.isEmpty){
-                        viewModel.eventTitle = "未設定"
-                    }
-                }, label: {
-                    ZStack {
-                        Circle()
-                            .fill(Color.yellow)
-                            .frame(width:100, height: 100)
-                        Text("Start")
-                            .font(.callout)
-                            .fontWeight(.heavy)
-                            .foregroundColor(Color.black)
-                            .multilineTextAlignment(.center)
-                    }.padding(50)
-                })
+                NavigationLink(
+                    destination: SwichTimeViewModel(),
+                    label: {
+                        ZStack {
+                            Circle()
+                                .fill(Color.yellow)
+                                .frame(width:100, height: 100)
+                            Text("Start")
+                                .font(.callout)
+                                .fontWeight(.heavy)
+                                .foregroundColor(Color.black)
+                                .multilineTextAlignment(.center)
+                        }.padding(50)
+                    })
+//                Button(action: {
+//                    viewModel.switchViewController = 1
+//                    if(viewModel.eventTitle.isEmpty){
+//                        viewModel.eventTitle = "未設定"
+//                    }
+//                }
+                
+            }
+            
+            .onDisappear {
+                // 開始日時を記録
+                viewModel.startMonth = Calendar.current.component(.month, from: Date())
+                viewModel.startDay = Calendar.current.component(.day, from: Date())
+                viewModel.startHour = Calendar.current.component(.hour, from: Date())
+                viewModel.startMinute = Calendar.current.component(.minute, from: Date())
+                viewModel.startSecond = Calendar.current.component(.second, from: Date())
             }
         }
-        .onDisappear {
-            // 開始日時を記録
-            viewModel.startMonth = Calendar.current.component(.month, from: Date())
-            viewModel.startDay = Calendar.current.component(.day, from: Date())
-            viewModel.startHour = Calendar.current.component(.hour, from: Date())
-            viewModel.startMinute = Calendar.current.component(.minute, from: Date())
-            viewModel.startSecond = Calendar.current.component(.second, from: Date())
-        }
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
     }
 }
 

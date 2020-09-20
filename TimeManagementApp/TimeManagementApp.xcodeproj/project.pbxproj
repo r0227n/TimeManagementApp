@@ -18,7 +18,7 @@
 		2A7E834F2515C94500A073FC /* TimeRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E834E2515C94500A073FC /* TimeRecordView.swift */; };
 		2A7E83522515C9AA00A073FC /* TimePauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E83512515C9AA00A073FC /* TimePauseView.swift */; };
 		2A7E835A25165A4F00A073FC /* DataFomatterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E835925165A4E00A073FC /* DataFomatterViewModel.swift */; };
-		2A82C94125174A6E001B2F66 /* InitialScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A82C94025174A6E001B2F66 /* InitialScreenViewModel.swift */; };
+		2A82C94A25177342001B2F66 /* SwichTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A82C94925177342001B2F66 /* SwichTimeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		2A7E834E2515C94500A073FC /* TimeRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRecordView.swift; sourceTree = "<group>"; };
 		2A7E83512515C9AA00A073FC /* TimePauseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePauseView.swift; sourceTree = "<group>"; };
 		2A7E835925165A4E00A073FC /* DataFomatterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFomatterViewModel.swift; sourceTree = "<group>"; };
-		2A82C94025174A6E001B2F66 /* InitialScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialScreenViewModel.swift; sourceTree = "<group>"; };
+		2A82C94925177342001B2F66 /* SwichTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwichTimeViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,7 @@
 			children = (
 				2A7E83472515C82700A073FC /* RecordViewModel.swift */,
 				2A7E835925165A4E00A073FC /* DataFomatterViewModel.swift */,
-				2A82C94025174A6E001B2F66 /* InitialScreenViewModel.swift */,
+				2A82C94925177342001B2F66 /* SwichTimeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,13 +188,13 @@
 			files = (
 				2A7E835A25165A4F00A073FC /* DataFomatterViewModel.swift in Sources */,
 				2A7E834C2515C86400A073FC /* TimeStartView.swift in Sources */,
+				2A82C94A25177342001B2F66 /* SwichTimeViewModel.swift in Sources */,
 				2A467E502515C63300F92683 /* Persistence.swift in Sources */,
 				2A467E492515C63300F92683 /* ContentView.swift in Sources */,
 				2A467E472515C63300F92683 /* TimeManagementAppApp.swift in Sources */,
 				2A7E83482515C82700A073FC /* RecordViewModel.swift in Sources */,
 				2A467E532515C63300F92683 /* TimeManagementApp.xcdatamodeld in Sources */,
 				2A7E83522515C9AA00A073FC /* TimePauseView.swift in Sources */,
-				2A82C94125174A6E001B2F66 /* InitialScreenViewModel.swift in Sources */,
 				2A7E834F2515C94500A073FC /* TimeRecordView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

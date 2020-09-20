@@ -10,14 +10,14 @@ import SwiftUI
 
 
 struct TimeRecordView: View {
-    
     @EnvironmentObject var viewModel: RecordViewModel
     
     @State var checkTheEnd = false
     @State var isDisplayed = true
     
-    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         VStack {
             Text(viewModel.eventTitle)
@@ -46,7 +46,7 @@ struct TimeRecordView: View {
                 .foregroundColor(Color.black)
                 .font(.system(size: 90))
                 .onTapGesture {
-                    viewModel.switchViewController = 2
+                    viewModel.switchViewController.toggle()
                     viewModel.endMonth = Calendar.current.component(.month, from: Date())
                     viewModel.endDay = Calendar.current.component(.day, from: Date())
                     viewModel.endHour = Calendar.current.component(.hour, from: Date())
@@ -61,15 +61,22 @@ struct TimeRecordView: View {
                     ActionSheet(title: Text("記録を中止しますか？"), message: Text("記録していたデータが削除されますがよろしいですか？"),
                                 buttons:
                                     [
-                                        .destructive(Text("記録を中断"),action: {
-                                            viewModel.switchViewController = 0
-                                        }),
+                                        .destructive(Text("記録を中断"),
+                                                     action: {
+                                                        viewModel.eventTitle = ""
+                                                        viewModel.elapsedHour = 0
+                                                        viewModel.elapsedMinute = 0
+                                                        viewModel.elapsedSecond = 0
+                                                        self.presentation.wrappedValue.dismiss()
+                                                     }),
                                         .cancel(Text("キャンセル"),action: {
                                             isDisplayed.toggle()
                                         })
                                     ])
                 }
-        }.padding(70)
+        }
+        .padding(70)
+        
     }
 }
 

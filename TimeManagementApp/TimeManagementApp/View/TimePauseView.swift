@@ -12,6 +12,8 @@ import SwiftUI
 struct TimePauseView: View {
     @EnvironmentObject var viewModel: RecordViewModel
     
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         VStack() {
             PauseHeaderLayer(header: viewModel)
@@ -20,28 +22,27 @@ struct TimePauseView: View {
                 .background(Color.gray)
                 .padding(25)
             Spacer()
-            
             IndicationRecords(resultTime: viewModel)
             Spacer()
             HStack {
                 Button(action: {
                     viewModel.eventTitle = ""
-                    viewModel.switchViewController = 0
                     viewModel.elapsedHour = 0
                     viewModel.elapsedMinute = 0
                     viewModel.elapsedSecond = 0
                     viewModel.brakeHour = 0
                     viewModel.brakeMinute = 0
                     viewModel.brakeSeconds = 0
+                    viewModel.switchViewController = true
+                    self.presentation.wrappedValue.dismiss()
                 }, label: {
                     Image(systemName: "stop.circle.fill")
                         .font(.system(size: 90))
                         .foregroundColor(Color.black)
                 })
                 Spacer()
-            
                 Button(action: {
-                    viewModel.switchViewController = 1
+                    viewModel.switchViewController.toggle()
                 }) {
                     ZStack {
                         Circle()
@@ -118,8 +119,6 @@ struct IndicationRecords: View {
         }
     }
 }
-
-
 
 struct TimePauseView_Previews: PreviewProvider {
     static var previews: some View {
