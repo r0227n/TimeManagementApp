@@ -8,20 +8,24 @@
 import SwiftUI
 
 struct TimeStartView: View {
-    @EnvironmentObject var viewModel: RecordViewModel
     
-    @State var stockTypeTitle = ""
-
+    
+    @EnvironmentObject var viewModel: RecordViewModel
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
+    
     var body: some View {
         NavigationView {
             VStack {
                 TextField("イベント名を入力してください", text: $viewModel.eventTitle)
-                          
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(25)
-                
                 Spacer()
-                NavigationLink(destination: TimeRecordView()) {
+                Button(action: {
+                    viewModel.switchViewController = 1
+                    if(viewModel.eventTitle.isEmpty){
+                        viewModel.eventTitle = "未設定"
+                    }
+                }, label: {
                     ZStack {
                         Circle()
                             .fill(Color.yellow)
@@ -31,15 +35,9 @@ struct TimeStartView: View {
                             .fontWeight(.heavy)
                             .foregroundColor(Color.black)
                             .multilineTextAlignment(.center)
-                    }
-                }
-                .padding(50)
+                    }.padding(50)
+                })
             }
-        }
-        .onAppear {
-            viewModel.elapsedSecond = 0
-            viewModel.eventTitle = ""
-            stockTypeTitle = ""
         }
         .onDisappear {
             // 開始日時を記録
@@ -60,3 +58,4 @@ struct TimeStartView_Previews: PreviewProvider {
             .environmentObject(RecordViewModel())
     }
 }
+

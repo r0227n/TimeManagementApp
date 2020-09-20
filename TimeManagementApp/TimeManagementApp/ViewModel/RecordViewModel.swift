@@ -8,6 +8,8 @@
 import SwiftUI
 
 class RecordViewModel: ObservableObject {
+    @Published var switchViewController:Int = 0
+    
     @Published var eventTitle:String = ""
     @Published var elapsedHour:Int = 0
     @Published var elapsedMinute:Int = 0
@@ -24,4 +26,8 @@ class RecordViewModel: ObservableObject {
     @Published var endHour = Calendar.current.component(.hour, from: Date())
     @Published var endMinute = Calendar.current.component(.minute, from: Date())
     @Published var endSecond = Calendar.current.component(.second, from: Date())
+    
+    @Published var brakeHour = 0
+    @Published var brakeMinute = 0
+    @Published var brakeSeconds = 0
 }

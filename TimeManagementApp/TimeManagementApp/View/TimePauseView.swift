@@ -10,38 +10,38 @@ import SwiftUI
 
 
 struct TimePauseView: View {
-     
-     
     @EnvironmentObject var viewModel: RecordViewModel
     
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    @State private var moveToTimeStartView = false
-    
-    @State var test: CGFloat?
     var body: some View {
         VStack() {
             PauseHeaderLayer(header: viewModel)
-            TextField("ブレースホルダーを入力してください", text: $viewModel.eventTitle)
+            TextField("イベント名を入力してください", text: $viewModel.eventTitle)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .background(Color.red)
+                .background(Color.gray)
                 .padding(25)
             Spacer()
             
             IndicationRecords(resultTime: viewModel)
             Spacer()
             HStack {
-                NavigationLink(destination: TimeStartView(),isActive: $moveToTimeStartView) {
+                Button(action: {
+                    viewModel.eventTitle = ""
+                    viewModel.switchViewController = 0
+                    viewModel.elapsedHour = 0
+                    viewModel.elapsedMinute = 0
+                    viewModel.elapsedSecond = 0
+                    viewModel.brakeHour = 0
+                    viewModel.brakeMinute = 0
+                    viewModel.brakeSeconds = 0
+                }, label: {
                     Image(systemName: "stop.circle.fill")
                         .font(.system(size: 90))
                         .foregroundColor(Color.black)
-                }
-            
-                .navigationBarTitle("", displayMode: .inline)
-                .navigationBarHidden(true)
+                })
                 Spacer()
             
                 Button(action: {
-                    mode.wrappedValue.dismiss()
+                    viewModel.switchViewController = 1
                 }) {
                     ZStack {
                         Circle()
@@ -64,9 +64,9 @@ struct PauseHeaderLayer: View {
             Rectangle()
                 .fill(Color.yellow)
                 .frame(height: SGConvenience.deviceHeight*0.35)
-            Text(String(format: "%02d", header.elapsedHour) + ":" +
-                String(format: "%02d", header.elapsedMinute) + ":" +
-                String(format: "%02d", header.elapsedSecond))
+            Text(timeFomatter(iHour: header.elapsedHour,
+                              iMinute: header.elapsedMinute,
+                              iSeconds: header.elapsedSecond))
         }
         .background(Color.yellow)
     }
@@ -74,11 +74,6 @@ struct PauseHeaderLayer: View {
 
 struct IndicationRecords: View {
     var resultTime: RecordViewModel
-    
-    @State var brakeHour = 0
-    @State var brakeMinute = 0
-    @State var brakeSecond = 0
-    
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -94,9 +89,9 @@ struct IndicationRecords: View {
             Spacer()
             VStack {
                 Text("休憩時間")
-                Text(timeFomatter(iHour: brakeHour,
-                                  iMinute: brakeMinute,
-                                  iSeconds: brakeSecond))
+                Text(timeFomatter(iHour: resultTime.brakeHour,
+                                  iMinute: resultTime.brakeMinute,
+                                  iSeconds: resultTime.brakeSeconds))
             }
             Spacer()
             VStack {
@@ -109,21 +104,20 @@ struct IndicationRecords: View {
         }
              
         .onReceive(timer) { _ in
-            brakeSecond += 1
+            resultTime.brakeSeconds += 1
             // 秒→分
-            if(brakeSecond > 59){
-                brakeSecond = 0
-                brakeMinute += 1
+            if(resultTime.brakeSeconds > 59){
+                resultTime.brakeSeconds = 0
+                resultTime.brakeMinute += 1
             }
             // 分→時
-            if(brakeMinute > 59){
-                brakeMinute = 0
-                brakeHour += 1
+            if(resultTime.brakeMinute > 59){
+                resultTime.brakeMinute = 0
+                resultTime.brakeHour += 1
             }
         }
     }
 }
-
 
 
 
