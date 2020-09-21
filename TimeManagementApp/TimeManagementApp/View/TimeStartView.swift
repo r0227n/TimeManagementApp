@@ -11,43 +11,32 @@ struct TimeStartView: View {
     @EnvironmentObject var viewModel: RecordViewModel
     
     var body: some View {
-        NavigationView {
-            VStack {
-                TextField("イベント名を入力してください", text: $viewModel.eventTitle)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(25)
-                Spacer()
-                NavigationLink(
-                    destination: SwichTimeViewModel(),
-                    label: {
-                        ZStack {
-                            Circle()
-                                .fill(Color.yellow)
-                                .frame(width:100, height: 100)
-                            Text("Start")
-                                .font(.callout)
-                                .fontWeight(.heavy)
-                                .foregroundColor(Color.black)
-                                .multilineTextAlignment(.center)
-                        }.padding(50)
-                    })
-//                Button(action: {
-//                    viewModel.switchViewController = 1
-//                    if(viewModel.eventTitle.isEmpty){
-//                        viewModel.eventTitle = "未設定"
-//                    }
-//                }
-                
-            }
-            
-            .onDisappear {
+        VStack {
+            TextField("イベント名を入力してください", text: $viewModel.eventTitle)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .padding(25)
+            Spacer()
+            Button(action: {
+                viewModel.timeViewSwitch = 2
+                let eventStartTime = EventStartTime.singleton
                 // 開始日時を記録
-                viewModel.startMonth = Calendar.current.component(.month, from: Date())
-                viewModel.startDay = Calendar.current.component(.day, from: Date())
-                viewModel.startHour = Calendar.current.component(.hour, from: Date())
-                viewModel.startMinute = Calendar.current.component(.minute, from: Date())
-                viewModel.startSecond = Calendar.current.component(.second, from: Date())
-            }
+                eventStartTime.sMonth = Calendar.current.component(.month, from: Date())
+                eventStartTime.sDay = Calendar.current.component(.day, from: Date())
+                eventStartTime.sHour = Calendar.current.component(.hour, from: Date())
+                eventStartTime.sMinute = Calendar.current.component(.minute, from: Date())
+                eventStartTime.sSecond = Calendar.current.component(.second, from: Date())
+            }, label: {
+                ZStack {
+                    Circle()
+                        .fill(Color.yellow)
+                        .frame(width:100, height: 100)
+                    Text("Start")
+                        .font(.callout)
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color.black)
+                        .multilineTextAlignment(.center)
+                }.padding(50)
+            })
         }
     }
 }

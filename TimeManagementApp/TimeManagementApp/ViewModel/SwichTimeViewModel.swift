@@ -9,12 +9,31 @@ import SwiftUI
 
 struct SwichTimeViewModel: View {
     @EnvironmentObject var viewModel: RecordViewModel
+    @State var check:Bool = true
     var body: some View {
-        if(viewModel.switchViewController){
-            TimeRecordView().navigationBarHidden(true)
-        }else{
-            TimePauseView().navigationBarHidden(true)
+        ZStack {
+            TimeStartView()
+                .opacity(viewModel.timeViewSwitch == 1 ? 1 : 0)
+                .offset(x : viewModel.timeViewSwitch == 1 ? 0 : 100)
+                .animation(.default)
+            TimeRecordView()
+                .opacity(viewModel.timeViewSwitch == 2 ? 1 : 0)
+                .offset(x : viewModel.timeViewSwitch == 2 ? 0 : 100)
+                .animation(.default)
+                .navigationBarHidden(true)
+            
+            TimePauseView()
+                .opacity(viewModel.timeViewSwitch == 3 ? 1 : 0)
+                .offset(x : viewModel.timeViewSwitch == 3 ? 0 : 100)
+                .animation(.easeOut)
+                
         }
+        
+    }
+    private func reset(){
+                            viewModel.elapsedHour = 0
+                            viewModel.elapsedMinute = 0
+                            viewModel.elapsedSecond = 0
     }
 
 }

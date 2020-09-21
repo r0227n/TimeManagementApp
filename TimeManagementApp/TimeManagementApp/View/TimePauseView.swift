@@ -12,29 +12,39 @@ import SwiftUI
 struct TimePauseView: View {
     @EnvironmentObject var viewModel: RecordViewModel
     
-    @Environment(\.presentationMode) var presentation
+    @State var memoEditor:String = "初期値"
+    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack() {
-            PauseHeaderLayer(header: viewModel)
+            ZStack {
+                Rectangle()
+                    .fill(Color.yellow)
+                    .frame(height: SGConvenience.deviceHeight*0.35)
+                Text(timeFomatter(iHour: viewModel.elapsedHour,
+                                  iMinute: viewModel.elapsedMinute,
+                                  iSeconds: viewModel.elapsedSecond))
+            }
+            .background(Color.yellow)
             TextField("イベント名を入力してください", text: $viewModel.eventTitle)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .background(Color.gray)
                 .padding(25)
             Spacer()
-            IndicationRecords(resultTime: viewModel)
+            Divider()
+            TextEditor(text: $memoEditor)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .font(.custom("HelveticaNeue", size: 13))
+                .lineSpacing(5)
+            Divider()
             Spacer()
             HStack {
                 Button(action: {
+                    memoEditor = "初期値"
                     viewModel.eventTitle = ""
                     viewModel.elapsedHour = 0
                     viewModel.elapsedMinute = 0
                     viewModel.elapsedSecond = 0
-                    viewModel.brakeHour = 0
-                    viewModel.brakeMinute = 0
-                    viewModel.brakeSeconds = 0
-                    viewModel.switchViewController = true
-                    self.presentation.wrappedValue.dismiss()
+                    viewModel.timeViewSwitch = 1
                 }, label: {
                     Image(systemName: "stop.circle.fill")
                         .font(.system(size: 90))
@@ -42,7 +52,7 @@ struct TimePauseView: View {
                 })
                 Spacer()
                 Button(action: {
-                    viewModel.switchViewController.toggle()
+                    viewModel.timeViewSwitch = 2
                 }) {
                     ZStack {
                         Circle()
@@ -54,71 +64,11 @@ struct TimePauseView: View {
                     } 
                 }
             }.padding(70)
-        }.edgesIgnoringSafeArea(.top)
+        }.edgesIgnoringSafeArea(.top).navigationBarHidden(true)
     }
 }
 
-struct PauseHeaderLayer: View {
-    var header: RecordViewModel
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color.yellow)
-                .frame(height: SGConvenience.deviceHeight*0.35)
-            Text(timeFomatter(iHour: header.elapsedHour,
-                              iMinute: header.elapsedMinute,
-                              iSeconds: header.elapsedSecond))
-        }
-        .background(Color.yellow)
-    }
-}
 
-struct IndicationRecords: View {
-    var resultTime: RecordViewModel
-    
-    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
-    var body: some View {
-        HStack {
-            Spacer()
-            VStack {
-                Text("開始時間")
-                Text(timeFomatter(iHour: resultTime.startHour,
-                                  iMinute: resultTime.startMinute,
-                                  iSeconds: resultTime.startSecond))
-            }
-            Spacer()
-            VStack {
-                Text("休憩時間")
-                Text(timeFomatter(iHour: resultTime.brakeHour,
-                                  iMinute: resultTime.brakeMinute,
-                                  iSeconds: resultTime.brakeSeconds))
-            }
-            Spacer()
-            VStack {
-                Text("終了時間")
-                Text(timeFomatter(iHour: resultTime.endHour,
-                                  iMinute: resultTime.endMinute,
-                                  iSeconds: resultTime.endSecond))
-            }
-            Spacer()
-        }
-             
-        .onReceive(timer) { _ in
-            resultTime.brakeSeconds += 1
-            // 秒→分
-            if(resultTime.brakeSeconds > 59){
-                resultTime.brakeSeconds = 0
-                resultTime.brakeMinute += 1
-            }
-            // 分→時
-            if(resultTime.brakeMinute > 59){
-                resultTime.brakeMinute = 0
-                resultTime.brakeHour += 1
-            }
-        }
-    }
-}
 
 struct TimePauseView_Previews: PreviewProvider {
     static var previews: some View {
