@@ -13,7 +13,7 @@ struct TimeManagementAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            SwichTimeViewModel()
+            TimeStartView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext).environmentObject(RecordViewModel())
         }
     }

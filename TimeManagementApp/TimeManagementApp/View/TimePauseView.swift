@@ -12,7 +12,8 @@ import SwiftUI
 struct TimePauseView: View {
     @EnvironmentObject var viewModel: RecordViewModel
     
-    @State var memoEditor:String = "初期値"
+    @Environment(\.presentationMode) var presentationMode
+    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
@@ -25,13 +26,13 @@ struct TimePauseView: View {
                                   iMinute: viewModel.elapsedMinute,
                                   iSeconds: viewModel.elapsedSecond))
             }
-            .background(Color.yellow)
+            .background(Color.yellow).edgesIgnoringSafeArea(.all)
             TextField("イベント名を入力してください", text: $viewModel.eventTitle)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(25)
             Spacer()
             Divider()
-            TextEditor(text: $memoEditor)
+            TextEditor(text: $viewModel.memoEditor)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.custom("HelveticaNeue", size: 13))
                 .lineSpacing(5)
@@ -39,12 +40,9 @@ struct TimePauseView: View {
             Spacer()
             HStack {
                 Button(action: {
-                    memoEditor = "初期値"
-                    viewModel.eventTitle = ""
-                    viewModel.elapsedHour = 0
-                    viewModel.elapsedMinute = 0
-                    viewModel.elapsedSecond = 0
-                    viewModel.timeViewSwitch = 1
+                    viewModel.deleteView.toggle()
+                    presentationMode.wrappedValue.dismiss()
+                    viewModel.memoEditor = .init()
                 }, label: {
                     Image(systemName: "stop.circle.fill")
                         .font(.system(size: 90))
@@ -52,7 +50,8 @@ struct TimePauseView: View {
                 })
                 Spacer()
                 Button(action: {
-                    viewModel.timeViewSwitch = 2
+                    viewModel.moveToView.toggle()
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     ZStack {
                         Circle()
@@ -61,10 +60,19 @@ struct TimePauseView: View {
                         Image(systemName: "play.fill")
                             .foregroundColor(Color.black)
                             .font(.system(size: 45))
-                    } 
+                    }
                 }
-            }.padding(70)
-        }.edgesIgnoringSafeArea(.top).navigationBarHidden(true)
+            }.padding(70).navigationBarHidden(true)
+        }
+        .onAppear(perform: {
+            let eventEndTime = EventEndTime.singleton
+            // 終了日時を記録
+            eventEndTime.eMonth = Calendar.current.component(.month, from: Date())
+            eventEndTime.eDay = Calendar.current.component(.day, from: Date())
+            eventEndTime.eHour = Calendar.current.component(.hour, from: Date())
+            eventEndTime.eMinute = Calendar.current.component(.minute, from: Date())
+            eventEndTime.eSecond = Calendar.current.component(.second, from: Date())
+        })
     }
 }
 

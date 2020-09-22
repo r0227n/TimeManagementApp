@@ -8,26 +8,13 @@
 import SwiftUI
 
 class RecordViewModel: ObservableObject {
-    @Published var timeViewSwitch = 1
-    
     @Published var eventTitle:String = ""
     @Published var elapsedHour:Int = 0
     @Published var elapsedMinute:Int = 0
     @Published var elapsedSecond:Int = 0
     
-    @Published var startMonth = Calendar.current.component(.month, from: Date())
-    @Published var startDay = Calendar.current.component(.day, from: Date())
-    @Published var startHour = Calendar.current.component(.hour, from: Date())
-    @Published var startMinute = Calendar.current.component(.minute, from: Date())
-    @Published var startSecond = Calendar.current.component(.second, from: Date())
+    @Published var deleteView = false
+    @Published var moveToView = false
     
-    @Published var endMonth = Calendar.current.component(.month, from: Date())
-    @Published var endDay = Calendar.current.component(.day, from: Date())
-    @Published var endHour = Calendar.current.component(.hour, from: Date())
-    @Published var endMinute = Calendar.current.component(.minute, from: Date())
-    @Published var endSecond = Calendar.current.component(.second, from: Date())
-    
-    @Published var brakeHour = 0
-    @Published var brakeMinute = 0
-    @Published var brakeSeconds = 0
+    @Published var memoEditor:String = "初期値"
 }
