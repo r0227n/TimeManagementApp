@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A115D5D251E0AE400F60FF6 /* KeybordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A115D5C251E0AE400F60FF6 /* KeybordModel.swift */; };
 		2A467E472515C63300F92683 /* TimeManagementAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A467E462515C63300F92683 /* TimeManagementAppApp.swift */; };
 		2A467E492515C63300F92683 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A467E482515C63300F92683 /* ContentView.swift */; };
 		2A467E4B2515C63300F92683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A467E4A2515C63300F92683 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A115D5C251E0AE400F60FF6 /* KeybordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeybordModel.swift; sourceTree = "<group>"; };
 		2A467E432515C63300F92683 /* TimeManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A467E462515C63300F92683 /* TimeManagementAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagementAppApp.swift; sourceTree = "<group>"; };
 		2A467E482515C63300F92683 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		2A7E83442515C7A900A073FC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				2A115D5C251E0AE400F60FF6 /* KeybordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				2A467E502515C63300F92683 /* Persistence.swift in Sources */,
 				2A467E492515C63300F92683 /* ContentView.swift in Sources */,
 				2A467E472515C63300F92683 /* TimeManagementAppApp.swift in Sources */,
+				2A115D5D251E0AE400F60FF6 /* KeybordModel.swift in Sources */,
 				2A7E83482515C82700A073FC /* RecordViewModel.swift in Sources */,
 				2A467E532515C63300F92683 /* TimeManagementApp.xcdatamodeld in Sources */,
 				2A7E83522515C9AA00A073FC /* TimePauseView.swift in Sources */,

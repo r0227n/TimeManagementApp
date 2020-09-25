@@ -30,7 +30,8 @@ struct TimeStartView: View {
                                 .multilineTextAlignment(.center)
                         }.padding(50)
                     })
-            }.onDisappear(perform: {
+            }
+            .onDisappear(perform: {
                 let eventStartTime = EventStartTime.singleton
                 // 開始日時を記録
                 eventStartTime.sMonth = Calendar.current.component(.month, from: Date())

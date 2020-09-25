@@ -82,6 +82,9 @@ struct TimeRecordView: View {
             .onAppear {
                 if(viewModel.deleteView){
                     presentationMode.wrappedValue.dismiss()
+                    viewModel.memoEditor = .init()
+                    viewModel.moveToView = .init()
+                    viewModel.deleteView = .init()
                 }
             }
         }

@@ -10,7 +10,6 @@ import SwiftUI
 @main
 struct TimeManagementAppApp: App {
     let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
             TimeStartView()
