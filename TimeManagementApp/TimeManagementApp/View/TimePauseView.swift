@@ -46,6 +46,9 @@ struct TimePauseView: View {
             if(floatKeybord != true){
                 HStack {
                     Button(action: {
+                        let eventEndTime = EventDay.singleton
+                        print(eventEndTime.StartDay)
+                        print(eventEndTime.EndDay)
                         viewModel.deleteView.toggle()
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -78,15 +81,11 @@ struct TimePauseView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
             floatKeybord = false
         }
-        .onAppear(perform: {
-            let eventEndTime = EventEndTime.singleton
-            // 終了日時を記録
-            eventEndTime.eMonth = Calendar.current.component(.month, from: Date())
-            eventEndTime.eDay = Calendar.current.component(.day, from: Date())
-            eventEndTime.eHour = Calendar.current.component(.hour, from: Date())
-            eventEndTime.eMinute = Calendar.current.component(.minute, from: Date())
-            eventEndTime.eSecond = Calendar.current.component(.second, from: Date())
-        })
+//        .onAppear(perform: {
+//            // 開始日時を記録
+//            let eventEndTime = EventDay.singleton
+//            eventEndTime.StartDay = dateFormatStr()
+//        })
     }
 }
 

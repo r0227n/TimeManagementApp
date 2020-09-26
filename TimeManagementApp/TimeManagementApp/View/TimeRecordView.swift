@@ -55,12 +55,9 @@ struct TimeRecordView: View {
                             .font(.system(size: 90))
                             .onTapGesture {
                                 viewModel.moveToView.toggle()
-                                let eventEndTime = EventEndTime.singleton
-                                eventEndTime.eMonth = Calendar.current.component(.month, from: Date())
-                                eventEndTime.eDay = Calendar.current.component(.day, from: Date())
-                                eventEndTime.eHour = Calendar.current.component(.hour, from: Date())
-                                eventEndTime.eMinute = Calendar.current.component(.minute, from: Date())
-                                eventEndTime.eSecond = Calendar.current.component(.second, from: Date())
+                                // 終了日時を記録
+                                let eventEndTime = EventDay.singleton
+                                eventEndTime.EndDay = dateFormatStr()
                             }
                             .onLongPressGesture {
                                 checkTheEnd = true

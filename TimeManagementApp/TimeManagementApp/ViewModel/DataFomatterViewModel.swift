@@ -20,25 +20,24 @@ class SGConvenience{
     #endif
 }
 
-class EventStartTime {
-    var sMonth = 0
-    var sDay = 0
-    var sHour = 0
-    var sMinute = 0
-    var sSecond = 0
-    static let singleton = EventStartTime() //staticキーワードでsingle()をsingletonに代入
-    private init(){}
+func dateFormatStr() -> String {
+    let formatter = DateFormatter()
+    // フォーマット設定
+    formatter.dateFormat = "yyyy:MM:dd:HH:mm"
+    //dateFormatter.dateFormat = "yyyyMMddHHmmssSSS" // ミリ秒込み
+    // ロケール設定（端末の暦設定に引きづられないようにする）
+    formatter.locale = Locale(identifier: "en_US_POSIX")
+    // タイムゾーン設定（端末設定によらず固定にしたい場合）
+    formatter.timeZone = TimeZone(identifier: "Asia/Tokyo")
+    return formatter.string(from: Date())
 }
 
-class EventEndTime {
-    var eMonth = 0
-    var eDay = 0
-    var eHour = 0
-    var eMinute = 0
-    var eSecond = 0
-    
-    static let singleton = EventEndTime()  //staticキーワードでsingle()をsingletonに代入
-    private init(){}
+
+class EventDay {
+var StartDay = ""
+var EndDay = ""
+static let singleton = EventDay() //staticキーワードでsingle()をsingletonに代入
+private init(){}
 }
 
 func timeFomatter(iHour:Int,iMinute:Int,iSeconds:Int) -> String {
