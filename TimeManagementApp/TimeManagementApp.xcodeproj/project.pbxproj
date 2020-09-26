@@ -9,26 +9,24 @@
 /* Begin PBXBuildFile section */
 		2A115D5D251E0AE400F60FF6 /* KeybordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A115D5C251E0AE400F60FF6 /* KeybordModel.swift */; };
 		2A467E472515C63300F92683 /* TimeManagementAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A467E462515C63300F92683 /* TimeManagementAppApp.swift */; };
-		2A467E492515C63300F92683 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A467E482515C63300F92683 /* ContentView.swift */; };
 		2A467E4B2515C63300F92683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A467E4A2515C63300F92683 /* Assets.xcassets */; };
 		2A467E4E2515C63300F92683 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A467E4D2515C63300F92683 /* Preview Assets.xcassets */; };
-		2A467E502515C63300F92683 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A467E4F2515C63300F92683 /* Persistence.swift */; };
 		2A467E532515C63300F92683 /* TimeManagementApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A467E512515C63300F92683 /* TimeManagementApp.xcdatamodeld */; };
 		2A7E83482515C82700A073FC /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E83472515C82700A073FC /* RecordViewModel.swift */; };
 		2A7E834C2515C86400A073FC /* TimeStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E834B2515C86400A073FC /* TimeStartView.swift */; };
 		2A7E834F2515C94500A073FC /* TimeRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E834E2515C94500A073FC /* TimeRecordView.swift */; };
 		2A7E83522515C9AA00A073FC /* TimePauseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E83512515C9AA00A073FC /* TimePauseView.swift */; };
 		2A7E835A25165A4F00A073FC /* DataFomatterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E835925165A4E00A073FC /* DataFomatterViewModel.swift */; };
+		2ABF3D30251F705A002E89CB /* TimeRecordPersistenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF3D2F251F705A002E89CB /* TimeRecordPersistenceViewModel.swift */; };
+		2ABF3D33251F72E2002E89CB /* AddNewRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABF3D32251F72E2002E89CB /* AddNewRecordModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2A115D5C251E0AE400F60FF6 /* KeybordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeybordModel.swift; sourceTree = "<group>"; };
 		2A467E432515C63300F92683 /* TimeManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimeManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A467E462515C63300F92683 /* TimeManagementAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManagementAppApp.swift; sourceTree = "<group>"; };
-		2A467E482515C63300F92683 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2A467E4A2515C63300F92683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A467E4D2515C63300F92683 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		2A467E4F2515C63300F92683 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		2A467E522515C63300F92683 /* TimeManagementApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TimeManagementApp.xcdatamodel; sourceTree = "<group>"; };
 		2A467E542515C63300F92683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A7E83472515C82700A073FC /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
@@ -36,6 +34,8 @@
 		2A7E834E2515C94500A073FC /* TimeRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRecordView.swift; sourceTree = "<group>"; };
 		2A7E83512515C9AA00A073FC /* TimePauseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePauseView.swift; sourceTree = "<group>"; };
 		2A7E835925165A4E00A073FC /* DataFomatterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFomatterViewModel.swift; sourceTree = "<group>"; };
+		2ABF3D2F251F705A002E89CB /* TimeRecordPersistenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRecordPersistenceViewModel.swift; sourceTree = "<group>"; };
+		2ABF3D32251F72E2002E89CB /* AddNewRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRecordModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +72,7 @@
 				2A7E83452515C7C200A073FC /* View */,
 				2A7E83442515C7A900A073FC /* Model */,
 				2A467E462515C63300F92683 /* TimeManagementAppApp.swift */,
-				2A467E482515C63300F92683 /* ContentView.swift */,
 				2A467E4A2515C63300F92683 /* Assets.xcassets */,
-				2A467E4F2515C63300F92683 /* Persistence.swift */,
 				2A467E542515C63300F92683 /* Info.plist */,
 				2A467E512515C63300F92683 /* TimeManagementApp.xcdatamodeld */,
 				2A467E4C2515C63300F92683 /* Preview Content */,
@@ -94,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				2A115D5C251E0AE400F60FF6 /* KeybordModel.swift */,
+				2ABF3D32251F72E2002E89CB /* AddNewRecordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -113,6 +112,7 @@
 			children = (
 				2A7E83472515C82700A073FC /* RecordViewModel.swift */,
 				2A7E835925165A4E00A073FC /* DataFomatterViewModel.swift */,
+				2ABF3D2F251F705A002E89CB /* TimeRecordPersistenceViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -187,13 +187,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A7E835A25165A4F00A073FC /* DataFomatterViewModel.swift in Sources */,
+				2ABF3D33251F72E2002E89CB /* AddNewRecordModel.swift in Sources */,
 				2A7E834C2515C86400A073FC /* TimeStartView.swift in Sources */,
-				2A467E502515C63300F92683 /* Persistence.swift in Sources */,
-				2A467E492515C63300F92683 /* ContentView.swift in Sources */,
 				2A467E472515C63300F92683 /* TimeManagementAppApp.swift in Sources */,
 				2A115D5D251E0AE400F60FF6 /* KeybordModel.swift in Sources */,
 				2A7E83482515C82700A073FC /* RecordViewModel.swift in Sources */,
 				2A467E532515C63300F92683 /* TimeManagementApp.xcdatamodeld in Sources */,
+				2ABF3D30251F705A002E89CB /* TimeRecordPersistenceViewModel.swift in Sources */,
 				2A7E83522515C9AA00A073FC /* TimePauseView.swift in Sources */,
 				2A7E834F2515C94500A073FC /* TimeRecordView.swift in Sources */,
 			);

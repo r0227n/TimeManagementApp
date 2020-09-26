@@ -26,21 +26,21 @@ struct TimeRecordView: View {
             VStack {
                 Text(viewModel.eventTitle)
                 Spacer()
-                Text(timeFomatter(iHour: viewModel.elapsedHour,
-                                  iMinute: viewModel.elapsedMinute,
-                                  iSeconds: viewModel.elapsedSecond))
+                Text(timeFomatter(iHour: viewModel.workHour,
+                                  iMinute: viewModel.workMinute,
+                                  iSeconds: viewModel.workSecond))
                 .onReceive(timer) { _ in
                     if((viewModel.moveToView != true) && (checkTheEnd != true)){
-                        viewModel.elapsedSecond += 1
+                        viewModel.workSecond += 1
                         // 秒→分
-                        if(viewModel.elapsedSecond > 59){
-                            viewModel.elapsedSecond = 0
-                            viewModel.elapsedMinute += 1
+                        if(viewModel.workSecond > 59){
+                            viewModel.workSecond = 0
+                            viewModel.workMinute += 1
                         }
                         // 分→時
-                        if(viewModel.elapsedMinute > 59){
-                            viewModel.elapsedMinute = 0
-                            viewModel.elapsedHour += 1
+                        if(viewModel.workMinute > 59){
+                            viewModel.workMinute = 0
+                            viewModel.workHour += 1
                         }
                     }
                 }
@@ -83,14 +83,14 @@ struct TimeRecordView: View {
                     viewModel.moveToView = .init()
                     viewModel.deleteView = .init()
                 }
-            }
+            } 
         }
         .navigationBarHidden(true)
         .onDisappear {
             viewModel.eventTitle = .init()
-            viewModel.elapsedHour = .init()
-            viewModel.elapsedMinute = .init()
-            viewModel.elapsedSecond = .init()
+            viewModel.workHour = .init()
+            viewModel.workMinute = .init()
+            viewModel.workSecond = .init()
         }
     }
 }

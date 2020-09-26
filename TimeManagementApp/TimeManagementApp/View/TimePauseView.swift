@@ -13,9 +13,11 @@ struct TimePauseView: View {
     @EnvironmentObject var viewModel: RecordViewModel
     
     @Environment(\.presentationMode) var presentationMode
+    @Environment(\.managedObjectContext) var viewContext
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var floatKeybord = false
+    
     
     var body: some View {
         VStack() {
@@ -24,9 +26,9 @@ struct TimePauseView: View {
                     Rectangle()
                         .fill(Color.yellow)
                         .frame(height: SGConvenience.deviceHeight*0.35)
-                    Text(timeFomatter(iHour: viewModel.elapsedHour,
-                                      iMinute: viewModel.elapsedMinute,
-                                      iSeconds: viewModel.elapsedSecond))
+                    Text(timeFomatter(iHour: viewModel.workHour,
+                                      iMinute: viewModel.workMinute,
+                                      iSeconds: viewModel.workSecond))
                 }.background(Color.yellow).edgesIgnoringSafeArea(.all)
                 TextField("イベント名を入力してください", text: $viewModel.eventTitle)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -40,15 +42,16 @@ struct TimePauseView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .font(.custom("HelveticaNeue", size: 13))
                 .lineSpacing(5)
-            
             Divider()
             Spacer()
             if(floatKeybord != true){
                 HStack {
                     Button(action: {
                         let eventEndTime = EventDay.singleton
-                        print(eventEndTime.StartDay)
-                        print(eventEndTime.EndDay)
+                        let workTimeStr = timeFomatter(iHour: viewModel.workHour,
+                                                       iMinute: viewModel.workMinute,
+                                                       iSeconds: viewModel.workSecond)
+                        AddNewRecord(sTime: eventEndTime.StartDay,eTime: eventEndTime.EndDay,wTime: workTimeStr,eTitle: viewModel.eventTitle,eMemo: viewModel.memoEditor)
                         viewModel.deleteView.toggle()
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -81,13 +84,26 @@ struct TimePauseView: View {
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
             floatKeybord = false
         }
-//        .onAppear(perform: {
-//            // 開始日時を記録
-//            let eventEndTime = EventDay.singleton
-//            eventEndTime.StartDay = dateFormatStr()
-//        })
+    }
+    func AddNewRecord(sTime:String,eTime:String,wTime:String,eTitle:String,eMemo:String) {
+        let newTimeRecord = TimeRecord(context: viewContext)
+        newTimeRecord.strTime = sTime
+        newTimeRecord.endTime = eTime
+        newTimeRecord.wrkTime = wTime
+        newTimeRecord.eventTitle = eTitle
+        newTimeRecord.eventMemo = eMemo
+
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
     }
 }
+
 
 
 

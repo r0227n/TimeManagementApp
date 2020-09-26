@@ -34,10 +34,10 @@ func dateFormatStr() -> String {
 
 
 class EventDay {
-var StartDay = ""
-var EndDay = ""
-static let singleton = EventDay() //staticキーワードでsingle()をsingletonに代入
-private init(){}
+    var StartDay = ""
+    var EndDay = ""
+    static let singleton = EventDay() //staticキーワードでsingle()をsingletonに代入
+    private init(){}
 }
 
 func timeFomatter(iHour:Int,iMinute:Int,iSeconds:Int) -> String {

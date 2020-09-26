@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct TimeManagementAppApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceViewModel = TimeRecordPersistenceViewModel.shared
     var body: some Scene {
         WindowGroup {
             TimeStartView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext).environmentObject(RecordViewModel())
+                .environment(\.managedObjectContext, persistenceViewModel.container.viewContext).environmentObject(RecordViewModel())
         }
     }
 }

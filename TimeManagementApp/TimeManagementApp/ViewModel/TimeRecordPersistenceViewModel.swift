@@ -1,21 +1,25 @@
 //
-//  Persistence.swift
+//  TimeRecordPersistenceViewModel.swift
 //  TimeManagementApp
 //
-//  Created by RyoNishimura on 2020/09/19.
+//  Created by RyoNishimura on 2020/09/26.
 //
 
 import CoreData
 
-struct PersistenceController {
-    static let shared = PersistenceController()
+struct TimeRecordPersistenceViewModel {
+    static let shared = TimeRecordPersistenceViewModel()
 
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
+    static var preview: TimeRecordPersistenceViewModel = {
+        let result = TimeRecordPersistenceViewModel(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newTimeRecord = TimeRecord(context: viewContext)
+            newTimeRecord.strTime = "2020:09:26:21:00"
+            newTimeRecord.endTime = "2020:09:26:22:00"
+            newTimeRecord.wrkTime = "01:00:00"
+            newTimeRecord.eventTitle = "デモデータ"
+            newTimeRecord.eventMemo = "デモデータ"
         }
         do {
             try viewContext.save()

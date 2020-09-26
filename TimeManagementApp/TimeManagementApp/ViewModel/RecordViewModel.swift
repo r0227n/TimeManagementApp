@@ -9,9 +9,9 @@ import SwiftUI
 
 class RecordViewModel: ObservableObject {
     @Published var eventTitle:String = ""
-    @Published var elapsedHour:Int = 0
-    @Published var elapsedMinute:Int = 0
-    @Published var elapsedSecond:Int = 0
+    @Published var workHour:Int = 0
+    @Published var workMinute:Int = 0
+    @Published var workSecond:Int = 0
     
     @Published var deleteView = false
     @Published var moveToView = false
