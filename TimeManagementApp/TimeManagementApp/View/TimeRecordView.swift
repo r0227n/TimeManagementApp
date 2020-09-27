@@ -57,7 +57,8 @@ struct TimeRecordView: View {
                                 viewModel.moveToView.toggle()
                                 // 終了日時を記録
                                 let eventEndTime = EventDay.singleton
-                                eventEndTime.EndDay = dateFormatStr()
+                                let endTimeRecord = dateFormatStr()
+                                eventEndTime.EndTime = endTimeRecord.time
                             }
                             .onLongPressGesture {
                                 checkTheEnd = true

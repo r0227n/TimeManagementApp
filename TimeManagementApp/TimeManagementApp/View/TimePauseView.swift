@@ -47,11 +47,11 @@ struct TimePauseView: View {
             if(floatKeybord != true){
                 HStack {
                     Button(action: {
-                        let eventEndTime = EventDay.singleton
+                        let eventTime = EventDay.singleton
                         let workTimeStr = timeFomatter(iHour: viewModel.workHour,
                                                        iMinute: viewModel.workMinute,
                                                        iSeconds: viewModel.workSecond)
-                        AddNewRecord(sTime: eventEndTime.StartDay,eTime: eventEndTime.EndDay,wTime: workTimeStr,eTitle: viewModel.eventTitle,eMemo: viewModel.memoEditor)
+                        AddNewRecord(sDay: eventTime.StartDay,sTime: eventTime.StartTime,eTime: eventTime.EndTime,wTime: workTimeStr,eTitle: viewModel.eventTitle,eMemo: viewModel.memoEditor)
                         viewModel.deleteView.toggle()
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
@@ -85,14 +85,14 @@ struct TimePauseView: View {
             floatKeybord = false
         }
     }
-    func AddNewRecord(sTime:String,eTime:String,wTime:String,eTitle:String,eMemo:String) {
+    func AddNewRecord(sDay:String,sTime:String,eTime:String,wTime:String,eTitle:String,eMemo:String) {
         let newTimeRecord = TimeRecord(context: viewContext)
+        newTimeRecord.strDay = sDay
         newTimeRecord.strTime = sTime
         newTimeRecord.endTime = eTime
         newTimeRecord.wrkTime = wTime
         newTimeRecord.eventTitle = eTitle
         newTimeRecord.eventMemo = eMemo
-
         do {
             try viewContext.save()
         } catch {

@@ -4,10 +4,11 @@
         <attribute name="endTime" optional="YES" attributeType="String"/>
         <attribute name="eventMemo" optional="YES" attributeType="String"/>
         <attribute name="eventTitle" optional="YES" attributeType="String"/>
+        <attribute name="strDay" optional="YES" attributeType="String"/>
         <attribute name="strTime" optional="YES" attributeType="String"/>
         <attribute name="wrkTime" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="TimeRecord" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="TimeRecord" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

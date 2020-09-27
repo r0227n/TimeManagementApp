@@ -15,7 +15,8 @@ struct TimeRecordPersistenceViewModel {
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
             let newTimeRecord = TimeRecord(context: viewContext)
-            newTimeRecord.strTime = "2020:09:26:21:00"
+            newTimeRecord.strDay = "20200926"
+            newTimeRecord.strTime = "21:00"
             newTimeRecord.endTime = "2020:09:26:22:00"
             newTimeRecord.wrkTime = "01:00:00"
             newTimeRecord.eventTitle = "デモデータ"
