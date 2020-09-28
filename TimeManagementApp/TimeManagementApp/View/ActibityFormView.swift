@@ -16,32 +16,34 @@ struct ActibityFormView: View {
         animation: .default)
     var record: FetchedResults<TimeRecord>
     
-    @State var selectionDate = Date()
+    @State private var selectionDate = Date()
+    
+    @State private var showingSheet = false
     
     var body: some View {
-            VStack(alignment: .leading) {
-                Form {
-                    Section(header: Text("表示項目").font(.headline)){
-                        DatePicker("日付を選択", selection: $selectionDate, displayedComponents: .date)
-                    }
-                    Section(header: Text("記録").font(.headline)){
-                        MyWorkTimeListView(fetchRequest: makeFetchRequest(choseDays: selectionDate))
-                    }
+        VStack(alignment: .leading) {
+            Form {
+                Section(header: Text("表示項目").font(.headline)){
+                    DatePicker("日付を選択", selection: $selectionDate, displayedComponents: .date)
                 }
-                .navigationTitle("ToDoApp")
-                .navigationBarItems(trailing: EditButton())
-                NavigationLink(
-                    destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
-                    label: {
-                        HStack {
-                            Image(systemName: "note.text.badge.plus")
-                            Text("記録を追加")
-                        }.padding(10)
-                    })
+                Section(header: Text("記録").font(.headline)){
+                    MyWorkTimeListView(fetchRequest: makeFetchRequest(choseDays: selectionDate))
+                }
             }
-            
-       
-
+            .navigationTitle("記録画面")
+            .navigationBarItems(trailing: EditButton())
+            Button(action: {
+                showingSheet.toggle()
+            }, label: {
+                HStack {
+                    Image(systemName: "note.text.badge.plus")
+                    Text("記録を追加")
+                }.padding(10)
+            })
+            .sheet(isPresented: $showingSheet,onDismiss: {print("画面を閉じた")}) {
+                AddNewWorkTimeView(addStartDay: $selectionDate)
+            }
+        }
     }
 }
 

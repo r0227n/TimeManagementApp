@@ -14,6 +14,7 @@
 		2A467E532515C63300F92683 /* TimeManagementApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A467E512515C63300F92683 /* TimeManagementApp.xcdatamodeld */; };
 		2A47AE44251F884C00C014E2 /* MyWorkTimeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A47AE43251F884C00C014E2 /* MyWorkTimeListView.swift */; };
 		2A5C94A42520788800726342 /* ActibityFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5C94A32520788800726342 /* ActibityFormView.swift */; };
+		2A5C94A82521657A00726342 /* AddNewWorkTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5C94A72521657A00726342 /* AddNewWorkTimeView.swift */; };
 		2A7E83482515C82700A073FC /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E83472515C82700A073FC /* RecordViewModel.swift */; };
 		2A7E834C2515C86400A073FC /* TimeStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E834B2515C86400A073FC /* TimeStartView.swift */; };
 		2A7E834F2515C94500A073FC /* TimeRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7E834E2515C94500A073FC /* TimeRecordView.swift */; };
@@ -32,6 +33,7 @@
 		2A467E542515C63300F92683 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A47AE43251F884C00C014E2 /* MyWorkTimeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWorkTimeListView.swift; sourceTree = "<group>"; };
 		2A5C94A32520788800726342 /* ActibityFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActibityFormView.swift; sourceTree = "<group>"; };
+		2A5C94A72521657A00726342 /* AddNewWorkTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWorkTimeView.swift; sourceTree = "<group>"; };
 		2A7E83472515C82700A073FC /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		2A7E834B2515C86400A073FC /* TimeStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStartView.swift; sourceTree = "<group>"; };
 		2A7E834E2515C94500A073FC /* TimeRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeRecordView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				2A7E83512515C9AA00A073FC /* TimePauseView.swift */,
 				2A47AE43251F884C00C014E2 /* MyWorkTimeListView.swift */,
 				2A5C94A32520788800726342 /* ActibityFormView.swift */,
+				2A5C94A72521657A00726342 /* AddNewWorkTimeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				2A7E835A25165A4F00A073FC /* DataFomatterViewModel.swift in Sources */,
 				2A7E834C2515C86400A073FC /* TimeStartView.swift in Sources */,
 				2A467E472515C63300F92683 /* TimeManagementAppApp.swift in Sources */,
+				2A5C94A82521657A00726342 /* AddNewWorkTimeView.swift in Sources */,
 				2A115D5D251E0AE400F60FF6 /* KeybordModel.swift in Sources */,
 				2A7E83482515C82700A073FC /* RecordViewModel.swift in Sources */,
 				2A5C94A42520788800726342 /* ActibityFormView.swift in Sources */,
