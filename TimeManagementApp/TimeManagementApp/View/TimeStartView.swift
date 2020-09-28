@@ -40,7 +40,6 @@ struct TimeStartView: View {
                                 Image(systemName: "stop.circle")
                                     .background(Color.white)
                             }
-
                         }).offset(x: -SGConvenience.deviceWidth/3,y: SGConvenience.deviceHeight/10)
                 }
                 

@@ -19,16 +19,30 @@ struct ActibityFormView: View {
     @State var selectionDate = Date()
     
     var body: some View {
-        Form {
-            Section(header: Text("表示項目").font(.headline)){
-                DatePicker("日付を選択", selection: $selectionDate, displayedComponents: .date)
+            VStack(alignment: .leading) {
+                Form {
+                    Section(header: Text("表示項目").font(.headline)){
+                        DatePicker("日付を選択", selection: $selectionDate, displayedComponents: .date)
+                    }
+                    Section(header: Text("記録").font(.headline)){
+                        MyWorkTimeListView(fetchRequest: makeFetchRequest(choseDays: selectionDate))
+                    }
+                }
+                .navigationTitle("ToDoApp")
+                .navigationBarItems(trailing: EditButton())
+                NavigationLink(
+                    destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
+                    label: {
+                        HStack {
+                            Image(systemName: "note.text.badge.plus")
+                            Text("記録を追加")
+                        }.padding(10)
+                    })
             }
-            Section(header: Text("記録").font(.headline)){
-                MyWorkTimeListView(fetchRequest: makeFetchRequest(choseDays: selectionDate))
-            }
-        }
+            
+       
+
     }
-    
 }
 
 struct ActibityFormView_Previews: PreviewProvider {
